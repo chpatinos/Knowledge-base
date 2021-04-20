@@ -1,0 +1,20 @@
+[
+  {
+    "id": "R1",
+    "title": "DTOs must implement serializable",
+    "lable": "DTOS",
+    "time": "10 MIN.",
+    "level": "MINOR",
+    "description": "DTOs must implement Serializable interface to provide serialization features.",
+    "solution": "DTOs must implement Serializable interface to provide serialization features."
+  },
+  {
+    "id": "R2",
+    "title": "DTOs must implement serializable",
+    "lable": "DTOS",
+    "time": "10 MIN.",
+    "level": "MINOR",
+    "description": "DTOs must implement Serializable interface to provide serialization features.",
+    "solution": "DTOs must implement Serializable interface to provide serialization features."
+  }
+]
