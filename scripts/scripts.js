@@ -1,36 +1,36 @@
 /* Read information from Json */
-readTextFile("../data/rules.json", function (text) {
-  var rules = JSON.parse(text);
 
-  /* Build collapsable card */
-  rules.forEach((rule, index) => {
+readTextFile('./data/rules.json', function (text) {
+	var rules = JSON.parse(text);
 
-    var element = buidlCollapsableElement(index, rule.id, rule.title, rule.lable, rule.time, rule.level, rule.description, rule.solution)
+	/* Build collapsable card */
+	rules.forEach((rule, index) => {
+		var element = buidlCollapsableElement(index, rule.id, rule.title, rule.lable, rule.time, rule.level, rule.description, rule.solution);
 
-    /* Append new card to accordion */
-    var accordion = document.querySelector("#accordion");
-    accordion.innerHTML += element;
-  });
-
+		/* Append new card to accordion */
+		var accordion = document.querySelector('#accordion');
+		accordion.innerHTML += element;
+	});
 });
-
 
 /* Helper method for read json data */
 function readTextFile(file, callback) {
-  var rawFile = new XMLHttpRequest();
-  rawFile.overrideMimeType("application/json");
-  rawFile.open("GET", file, true);
-  rawFile.onreadystatechange = function () {
-    if (rawFile.readyState === 4 && rawFile.status == "200") {
-      callback(rawFile.responseText);
-    }
-  }
-  rawFile.send(null);
+	var rawFile = new XMLHttpRequest();
+	rawFile.overrideMimeType('application/json');
+	rawFile.open('GET', file, true);
+	rawFile.onreadystatechange = function () {
+		if (rawFile.readyState === 4 && rawFile.responseText) {
+			callback(rawFile.responseText);
+		} else {
+			callback('[]');
+		}
+	};
+	rawFile.send(null);
 }
 
 /* Template collapsable component */
 function buidlCollapsableElement(index, id, title, lable, time, level, description, solution) {
-  return `
+	return `
 <div class="card">
   <div class="card-header" id="heading${index}">
     <h4 class="mb-0">
@@ -54,5 +54,5 @@ function buidlCollapsableElement(index, id, title, lable, time, level, descripti
       <p>${solution}</p>
     </div>
   </div>
-</div>`
+</div>`;
 }
